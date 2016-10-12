@@ -7,14 +7,14 @@ class WelcomeController < ApplicationController
 
   def encriptar_datos
     cifrador = Cifrador.new(clave)
-    archivo_encriptado = cifrador.encrypt(archivo_a_encriptar)
+    archivo_encriptado = cifrador.encriptar(archivo_a_encriptar)
 
     send_data(archivo_encriptado, :filename => "encriptado" )
   end
 
   def desencriptar_datos
     cifrador = Cifrador.new(clave)
-    archivo_desencriptado = cifrador.decrypt(archivo_a_desencriptar)
+    archivo_desencriptado = cifrador.desencriptar(archivo_a_desencriptar)
 
     send_data(archivo_desencriptado, :filename => "desencriptado" )
   end

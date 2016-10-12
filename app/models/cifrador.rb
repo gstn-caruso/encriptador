@@ -2,21 +2,18 @@ class Cifrador
 
   def initialize(clave)
     @clave = clave
+    @cipher = OpenSSL::Cipher::Cipher.new('aes-256-cbc')
   end
 
-  def cipher
-    OpenSSL::Cipher::Cipher.new('aes-256-cbc')
+  def desencriptar(un_objeto)
+    desencriptador = @cipher.decrypt
+    desencriptador.key = Digest::SHA256.digest(@clave)
+    desencriptador.update(Base64.decode64(un_objeto.to_s)) + desencriptador.final
   end
 
-  def decrypt(value)
-    c = cipher.decrypt
-    c.key = Digest::SHA256.digest(@clave)
-    c.update(Base64.decode64(value.to_s)) + c.final
-  end
-
-  def encrypt(value)
-    c = cipher.encrypt
-    c.key = Digest::SHA256.digest(@clave)
-    Base64.encode64(c.update(value.to_s) + c.final)
+  def encriptar(un_objeto)
+    encriptador = @cipher.encrypt
+    encriptador.key = Digest::SHA256.digest(@clave)
+    Base64.encode64(encriptador.update(un_objeto.to_s) + encriptador.final)
   end
 end
