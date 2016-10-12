@@ -1,0 +1,16 @@
+<body style="background-color: rgba(255, 0, 0, 0.05)">
+  <div class="contenedor">
+
+    <h1>Encripta tu archivo:</h1>
+
+    <%= form_tag({action: :encriptar_datos}, multipart: true) do %>
+        <%= text_field_tag(:clave, nil, placeholder: 'Ingresa tu clave acá',:required => true) %>
+        <%= file_field_tag(:archivo_a_encriptar,:required => true) %>
+        <%= submit_tag('Enviar') %>
+    <% end %>
+
+    <div class="actions">
+      <%= link_to 'Desencriptar', desencriptar_path %>
+    </div>
+  </div>
+</body>

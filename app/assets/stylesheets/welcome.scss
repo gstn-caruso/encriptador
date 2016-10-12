@@ -1,0 +1,24 @@
+input {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.contenedor{
+  background-color: white;
+  border-radius: 12px;
+  max-width: 500px;
+  padding: 30px 30px 30px 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.actions{
+  margin-top: 5%;
+  text-align: center
+}
